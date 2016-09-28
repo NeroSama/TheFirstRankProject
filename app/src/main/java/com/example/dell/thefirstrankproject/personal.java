@@ -31,18 +31,24 @@ public class personal extends Activity {
     class ButtonListener implements View.OnClickListener{
         public void onClick(View v){
             if(v.getId()==R.id.mainPage){
-                Intent intent=new Intent();
-                intent.putExtra("user",user);
-                intent.setClass(personal.this,main_page.class);
-                personal.this.startActivity(intent);
+                PageChange pageChange=new PageChange();
+                pageChange.pageChange(user,personal.this,main_page.class);
                 finish();
+//                Intent intent=new Intent();
+//                intent.putExtra("user",user);
+//                intent.setClass(personal.this,main_page.class);
+//                personal.this.startActivity(intent);
+//                finish();
             }
             else if(v.getId()==R.id.myCircle){
-                Intent intent=new Intent();
-                intent.putExtra("user",user);
-                intent.setClass(personal.this,my_circle.class);
-                personal.this.startActivity(intent);
+                PageChange pageChange=new PageChange();
+                pageChange.pageChange(user,personal.this,my_circle.class);
                 finish();
+//                Intent intent=new Intent();
+//                intent.putExtra("user",user);
+//                intent.setClass(personal.this,my_circle.class);
+//                personal.this.startActivity(intent);
+//                finish();
             }
         }
     }

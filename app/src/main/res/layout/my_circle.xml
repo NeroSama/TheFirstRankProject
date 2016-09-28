@@ -3,6 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
     <TableLayout
+            android:id="@+id/circleTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/topColor"
@@ -39,8 +40,17 @@
                     android:src="@drawable/top2"/>
         </TableRow>
     </TableLayout>
+    <ListView
+            android:id="@+id/circleName"
+            android:layout_below="@+id/circleTop"
+            android:layout_above="@+id/build"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    </ListView>
     <Button
             android:layout_width="match_parent"
+            android:id="@+id/build"
             android:layout_height="50dp"
             android:text="@string/buildMyCircle"
             android:background="@drawable/buildmycirclebuttom"

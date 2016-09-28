@@ -34,6 +34,7 @@
     <LinearLayout 
             android:layout_width="match_parent" 
             android:layout_height="45dp"
+            android:id="@+id/search"
             android:background="@drawable/rectanglecorner"
             android:orientation="horizontal"
             android:layout_below="@+id/top">
@@ -50,4 +51,11 @@
                 android:layout_marginBottom="5px"
                 android:hint="搜索"/>
     </LinearLayout>
+    <ListView
+            android:layout_below="@+id/search"
+            android:id="@+id/searchCircleName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    </ListView>
 </RelativeLayout>
