@@ -11,4 +11,5 @@
     <color name="mainInterfaceTextColor">#000000</color>
     <color name="select">#84c1ff</color>
     <color name="buildMyCircle">#84c1ff</color>
+    <color name="buildIntroduce">#FFE4B5</color>
 </resources>

@@ -26,6 +26,12 @@
         </activity>
         <activity android:name=".circle_search">
         </activity>
+        <activity android:name=".team_talk_window">
+        </activity>
+        <activity android:name=".circle_build">
+        </activity>
+        <activity android:name=".have_build">
+        </activity>
     </application>
 
 </manifest>

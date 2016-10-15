@@ -13,7 +13,10 @@ import java.util.Map;
  * Created by dell on 2016/9/28.
  */
 public class SetListView {
-    protected boolean setListView(String[] names, Activity activity,int id){
+
+    protected ListView list;
+
+    protected boolean setListView(String[] names,/*String[] teamID, */Activity activity,int id){
         List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
         for (int i=0;i<names.length;i++){
             Map<String,Object> listItem=new HashMap<String,Object>();
@@ -22,8 +25,10 @@ public class SetListView {
         }
         SimpleAdapter simpleAdapter= new SimpleAdapter(activity,listItems,R.layout.link_people,
                 new String[]{"name"},new int[]{R.id.name});
-        ListView list=(ListView)activity.findViewById(id);
+        list=(ListView)activity.findViewById(id);
         list.setAdapter(simpleAdapter);
         return true;
     }
+
+
 }

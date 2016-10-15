@@ -20,6 +20,7 @@ public class my_circle extends Activity {
     private ImageButton mainPage=null;
     private ImageButton circleSearch=null;
     private ButtonListener buttonListener=null;
+    private Button build;
     private String[] names;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,16 @@ public class my_circle extends Activity {
         //setListView();
         SetListView listView=new SetListView();
         listView.setListView(names,this,R.id.circleName);
+        listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent();
+                intent.putExtra("user",user);
+                intent.putExtra("team",names[position]);
+                intent.setClass(my_circle.this,team_talk_window.class);
+                my_circle.this.startActivity(intent);
+            }
+        });
         setListener();
     }
     private boolean getInfoFromLastActivity(){
@@ -56,6 +67,8 @@ public class my_circle extends Activity {
         mainPage=(ImageButton)findViewById(R.id.mainPage);
         personal=(ImageButton)findViewById(R.id.personal);
         circleSearch=(ImageButton)findViewById(R.id.circleSearch);
+        build=(Button)findViewById(R.id.build);
+        build.setOnClickListener(buttonListener);
         mainPage.setOnClickListener(buttonListener);
         personal.setOnClickListener(buttonListener);
         circleSearch.setOnClickListener(buttonListener);
@@ -90,6 +103,10 @@ public class my_circle extends Activity {
 //                intent.putExtra("user",user);
 //                intent.setClass(my_circle.this,circle_search.class);
 //                my_circle.this.startActivity(intent);
+            }
+            else if(v.getId()==R.id.build){
+                PageChange pageChange=new PageChange();
+                pageChange.pageChange(user,my_circle.this,circle_build.class);
             }
         }
     }
