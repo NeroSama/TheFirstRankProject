@@ -80,13 +80,13 @@ public class LoginIn extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sureButton:
-                //sendRequestToServer();
+                sendRequestToServer();
                 //测试代码
-                Intent intent=new Intent();
-                intent.putExtra("user",a);
-                intent.setClass(LoginIn.this,main_page.class);
-                LoginIn.this.startActivity(intent);
-                finish();
+//                Intent intent=new Intent();
+//                intent.putExtra("user",a);
+//                intent.setClass(LoginIn.this,main_page.class);
+//                LoginIn.this.startActivity(intent);
+//                finish();
                 //结束
                 break;
             default:

@@ -29,7 +29,7 @@ public class have_build extends Activity{
 
         //列出所加入的邻里圈
         GetMyCircleNames getName=new GetMyCircleNames();
-        names=getName.getMyCircleNames(user);
+        //names=getName.getMyCircleNames(user,"have_build");//3:option:获取have_build信息
         SetListView listView=new SetListView();
         listView.setListView(names,this,R.id.have_build_names);
         listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

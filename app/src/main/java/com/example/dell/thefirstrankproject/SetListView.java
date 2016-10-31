@@ -1,6 +1,9 @@
 package com.example.dell.thefirstrankproject;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -27,6 +30,21 @@ public class SetListView {
                 new String[]{"name"},new int[]{R.id.name});
         list=(ListView)activity.findViewById(id);
         list.setAdapter(simpleAdapter);
+
+//
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                System.out.println("hahaha触发");
+//                Intent intent=new Intent();
+//                intent.putExtra("user",user);
+//                intent.putExtra("team",names[position]);
+//                intent.setClass(my_circle.this,team_talk_window.class);
+//                my_circle.this.startActivity(intent);
+//            }
+//        });
+
         return true;
     }
 

@@ -33,7 +33,7 @@ public class circle_search extends Activity {
         user=intent.getStringExtra("user");
         //获取搜索圈信息，设置ListView
         GetMyCircleNames getName=new GetMyCircleNames();
-        names=getName.getMyCircleNames(user);
+        //names=getName.getMyCircleNames(user,"circle_search");//2:option:获取circle_search信息
         SetListView listView=new SetListView();
         listView.setListView(names,this,R.id.searchCircleName);
     }

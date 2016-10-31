@@ -3,6 +3,9 @@ package com.example.dell.thefirstrankproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
@@ -26,22 +29,30 @@ public class my_circle extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_circle);
+        //从上一个Activity中获取信息
         getInfoFromLastActivity();
+        //获取我的圈信息
         GetMyCircleNames getName=new GetMyCircleNames();
-        names=getName.getMyCircleNames(user);
-        //setListView();
-        SetListView listView=new SetListView();
-        listView.setListView(names,this,R.id.circleName);
-        listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent();
-                intent.putExtra("user",user);
-                intent.putExtra("team",names[position]);
-                intent.setClass(my_circle.this,team_talk_window.class);
-                my_circle.this.startActivity(intent);
-            }
-        });
+        getName.sendActivity(this);
+        getName.getMyCircleNames(user,"get_circle");//1:option:获取my_circle
+
+//        names=new String[]{"洛天依","初音"};
+//        SetListView listView=new SetListView();
+//        listView.setListView(names,this,R.id.circleName);
+
+
+//        listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent=new Intent();
+//                intent.putExtra("user",user);
+//                intent.putExtra("team",names[position]);
+//                intent.setClass(my_circle.this,team_talk_window.class);
+//                my_circle.this.startActivity(intent);
+//            }
+//        });
+
+
         setListener();
     }
     private boolean getInfoFromLastActivity(){
@@ -49,19 +60,7 @@ public class my_circle extends Activity {
         user=intent.getStringExtra("user");
         return true;
     }
-//    private boolean setListView(){
-//        List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
-//        for (int i=0;i<names.length;i++){
-//            Map<String,Object> listItem=new HashMap<String,Object>();
-//            listItem.put("name",names[i]);
-//            listItems.add(listItem);
-//        }
-//        SimpleAdapter simpleAdapter= new SimpleAdapter(this,listItems,R.layout.link_people,
-//                new String[]{"name"},new int[]{R.id.name});
-//        ListView list=(ListView)findViewById(R.id.circleName);
-//        list.setAdapter(simpleAdapter);
-//        return true;
-//    }
+
     private boolean setListener(){
         buttonListener=new ButtonListener();
         mainPage=(ImageButton)findViewById(R.id.mainPage);
