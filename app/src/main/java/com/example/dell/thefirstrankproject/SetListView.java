@@ -30,21 +30,19 @@ public class SetListView {
                 new String[]{"name"},new int[]{R.id.name});
         list=(ListView)activity.findViewById(id);
         list.setAdapter(simpleAdapter);
-
-//
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                System.out.println("hahaha触发");
-//                Intent intent=new Intent();
-//                intent.putExtra("user",user);
-//                intent.putExtra("team",names[position]);
-//                intent.setClass(my_circle.this,team_talk_window.class);
-//                my_circle.this.startActivity(intent);
-//            }
-//        });
-
+        return true;
+    }
+    protected boolean setHaveBuildListView(String[] names,/*String[] teamID, */Activity activity,int id){
+        List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
+        for (int i=0;i<names.length;i++){
+            Map<String,Object> listItem=new HashMap<String,Object>();
+            listItem.put("name",names[i]);
+            listItems.add(listItem);
+        }
+        SimpleAdapter simpleAdapter= new SimpleAdapter(activity,listItems,R.layout.search_have_build_circle,
+                new String[]{"name"},new int[]{R.id.name});
+        list=(ListView)activity.findViewById(id);
+        list.setAdapter(simpleAdapter);
         return true;
     }
 

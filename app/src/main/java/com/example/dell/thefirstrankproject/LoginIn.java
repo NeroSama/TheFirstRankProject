@@ -99,7 +99,7 @@ public class LoginIn extends Activity implements View.OnClickListener {
         if (a.equals("") || b.equals("")) {
             return;
         }
-        HttpUtil.postHttpRequest(SERVER_ADDRESS, a, b, new HttpCallbackListener() {
+        HttpUtil.postHttpRequest(SERVER_ADDRESS, a, b,"login", new HttpCallbackListener() {
             @Override
             public void onFinish(String response) {
                 Message msg = new Message();

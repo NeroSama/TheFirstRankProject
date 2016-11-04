@@ -22,4 +22,5 @@
     <string name="circleName">  圈  名  ：</string>
     <string name="circleIntroduce">圈介绍：</string>
     <string name="circleBuild">创建邻里圈</string>
+    <string name="circle_have_build_dissolution">解散该圈</string>
 </resources>

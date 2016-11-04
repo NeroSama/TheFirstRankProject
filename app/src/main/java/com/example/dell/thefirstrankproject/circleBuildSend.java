@@ -1,17 +1,18 @@
 package com.example.dell.thefirstrankproject;
 
 /**
- * Created by dell on 2016/9/7.
+ * Created by dell on 2016/11/2.
  */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 
-public class HttpUtil {
+public class circleBuildSend {
     public static void postHttpRequest(final String address, final String a, final String b, final String c,final HttpCallbackListener listener) {
         new Thread(new Runnable() {
             @Override
@@ -22,12 +23,14 @@ public class HttpUtil {
                     URL url = new URL(address);
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
+                    // 设置编码格式
+                    connection.setRequestProperty("charset","utf8");
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(8000);
                     connection.setDoInput(true);
                     connection.setDoOutput(true);
                     connection.setRequestProperty("para1", a);
-                    connection.setRequestProperty("para2", b);
+                    connection.setRequestProperty("para2", URLEncoder.encode(b, "utf-8"));
                     connection.setRequestProperty("para3", c);
                     InputStream in = connection.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));

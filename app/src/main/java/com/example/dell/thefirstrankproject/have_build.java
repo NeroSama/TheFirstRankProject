@@ -26,22 +26,25 @@ public class have_build extends Activity{
         buttonListener=new ButtonListener();
         back=(ImageButton)findViewById(R.id.haveBuildBack);
         back.setOnClickListener(buttonListener);
+        GetMyCircleNames getOtherName=new GetMyCircleNames();
+        getOtherName.sendActivity(this);
+        getOtherName.getMyCircleNames(user,"get_circle_have_build");
 
-        //列出所加入的邻里圈
-        GetMyCircleNames getName=new GetMyCircleNames();
-        //names=getName.getMyCircleNames(user,"have_build");//3:option:获取have_build信息
-        SetListView listView=new SetListView();
-        listView.setListView(names,this,R.id.have_build_names);
-        listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent();
-                intent.putExtra("user",user);
-                intent.putExtra("team",names[position]);
-                intent.setClass(have_build.this,team_talk_window.class);
-                have_build.this.startActivity(intent);
-            }
-        });
+//        //列出所加入的邻里圈
+//        GetMyCircleNames getName=new GetMyCircleNames();
+//        //names=getName.getMyCircleNames(user,"have_build");//3:option:获取have_build信息
+//        SetListView listView=new SetListView();
+//        listView.setListView(names,this,R.id.have_build_names);
+//        listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent=new Intent();
+//                intent.putExtra("user",user);
+//                intent.putExtra("team",names[position]);
+//                intent.setClass(have_build.this,team_talk_window.class);
+//                have_build.this.startActivity(intent);
+//            }
+//        });
 
 
     }

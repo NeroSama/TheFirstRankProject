@@ -34,7 +34,7 @@ public class my_circle extends Activity {
         //获取我的圈信息
         GetMyCircleNames getName=new GetMyCircleNames();
         getName.sendActivity(this);
-        getName.getMyCircleNames(user,"get_circle");//1:option:获取my_circle
+        getName.getMyCircleNames(user,"get_circle");//user,option:获取my_circle
 
 //        names=new String[]{"洛天依","初音"};
 //        SetListView listView=new SetListView();
@@ -106,6 +106,7 @@ public class my_circle extends Activity {
             else if(v.getId()==R.id.build){
                 PageChange pageChange=new PageChange();
                 pageChange.pageChange(user,my_circle.this,circle_build.class);
+                finish();
             }
         }
     }

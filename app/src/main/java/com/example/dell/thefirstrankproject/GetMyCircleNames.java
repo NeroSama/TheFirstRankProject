@@ -13,10 +13,10 @@ import android.widget.AdapterView;
  */
 public class GetMyCircleNames {
     public Activity a;
-    public String[] names;
+    public String[] names=null;
     private String user;
     private String option;
-    private String[] my_circle_name;
+//    private String[] my_circle_name;
     public SetListView listView;
     private static final int SHOW_RESULT = 0;
     private static final String SERVER_ADDRESS = "http://172.22.30.48:8080/firstProject_war_exploded/server-plus-demo";
@@ -27,43 +27,61 @@ public class GetMyCircleNames {
         switch (msg.what) {
             case SHOW_RESULT:
                 names=new String[10];
-                names=msg.obj.toString().split(" ");
+                if(msg.obj.toString()!=" "){
+                    names=msg.obj.toString().split(" ");
+                }
 //                SetListView listView=new SetListView();
-                listView.setListView(names,a,R.id.circleName);
-
-                //设置监听器
-                listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent=new Intent();
-                        intent.putExtra("user",user);
-                        intent.putExtra("team",names[position]);
-                        intent.setClass(a,team_talk_window.class);
-                        a.startActivity(intent);
-                    }
-                });
+                if("get_circle".equals(option)&&names!=null){
+                    listView.setListView(names,a,R.id.circleName);
+                    //设置监听器
+                    listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent=new Intent();
+                            intent.putExtra("user",user);
+                            intent.putExtra("team",names[position]);
+                            intent.setClass(a,team_talk_window.class);
+                            a.startActivity(intent);
+                        }
+                    });
+                }
+                else if("get-other-circle".equals(option)&&names!=null){
+                    listView.setListView(names,a,R.id.searchCircleName);
+                    //设置监听器
+                    listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //跳转到加入该圈页面
+                        }
+                    });
+                }
+                else if("get_circle_have_build".equals(option)&&names!=null){
+                    listView.setHaveBuildListView(names,a,R.id.have_build_names);
+                    listView.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //弹出删除该圈确定提示、进入该圈聊天
+                        }
+                    });
+                }
 
                 break;
             default:
                 break;
         }
     }
-};
+    };
     GetMyCircleNames(){
     }
     public void getMyCircleNames(String user,String option){
         this.option=option;
         this.user=user;
-        names=new String[1];
         listView=new SetListView();
         sendRequestToServer();
 
-//        names=new String[]{"洛天依","初音"};
-        //System.out.println(names[0]+"hahahah");
-
     }
     private void sendRequestToServer() {
-        HttpUtil.postHttpRequest(SERVER_ADDRESS, user, option, new HttpCallbackListener() {
+        HttpUtil.postHttpRequest(SERVER_ADDRESS, user, "",option, new HttpCallbackListener() {
             @Override
             public void onFinish(String response) {
                 Message msg = new Message();
